@@ -1,0 +1,33 @@
+package core.dirver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+
+public enum WebDriverKind {
+    CHROME {
+        @Override
+        public WebDriver createDriver() {
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--start-maximized");
+            options.addArguments("--disable-notifications");
+            return new                                     ChromeDriver(options);
+        }
+    },
+    FIREFOX {
+        @Override
+        public WebDriver createDriver() {
+            WebDriverManager.firefoxdriver().setup();
+            FirefoxOptions options = new FirefoxOptions();
+            options.addArguments("--width=1920", "--height=1080");
+            return new FirefoxDriver(options);
+        }
+    };
+
+    public abstract WebDriver createDriver();
+
+}
