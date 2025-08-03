@@ -1,6 +1,6 @@
 package core.base;
 
-import core.dirver.WebDriverKind;
+import core.driver.WebDriverKind;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
